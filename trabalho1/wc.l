@@ -93,7 +93,8 @@ var             {   printf("<VAR, %d>", lines);   }
 int main(int argc, char **argv)
 {
 
-    FILE *file = fopen("teste1.s", "r");
+    char *fileName = argv[1];
+    FILE *file = fopen(fileName, "r");
 
 
     if(!file){
