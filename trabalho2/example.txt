@@ -1,0 +1,6 @@
+programa test ;
+var
+v : inteiro ;
+inicio
+v := -1,26 ;
+fim

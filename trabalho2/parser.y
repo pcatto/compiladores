@@ -1,8 +1,14 @@
+/*  Trabalho de Compiladores                */
+/*  Analizador sintatico                    */
+/*  Professor: Marco Antonio Barbosa        */
+/*  Aluno: Patrick Catto                    */
+
 %{
+/* This is the prologue section. This code goes
+on the top of the parser implementation file. */
 #include <stdio.h>
-// To avoid warning, we include below definitions:
-int yylex();
-void yyerror (const char *s);
+extern int yyerror(char *message);
+extern int yylex(void);
 %}
 
 %token  Num 

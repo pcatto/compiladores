@@ -4,11 +4,18 @@
 /*  Aluno: Patrick Catto                    */
 
 /* just like Unix wc */
+
+%option header-file="lex.yy.h"
 %option noyywrap
+
+%top{
+/* This goes at the top of the generated file */
+#include "parser.tab.h"
+}
 
 %{
 #include <stdio.h>
-#include "y.tab.h"
+#include "parser.tab.h"
 #include <stdlib.h>
 extern int yylval;
 #include <string.h>
@@ -34,7 +41,7 @@ verdadeiro              {   return True     ; }
 falso                   {   return False     ; }                 
 
             /*Erros*/
-[0-9]+[^ \n]+           {   erros++;   printf("---Erro Lexico linha %d---", lines);}
+[0-9]+[^ \n]+           {   erros++;   printf("\nError: lexical error");} /* line %d", lines*/
 
             /*Lexemas e Tokens*/
 
@@ -93,7 +100,7 @@ var             {   return VAR              ; }
 \n              {   lines++;    }
 
             /*outros termos*/
-[^(\n\t[:space:])]+     {   erros++;   printf("<ERRO LEXICO, %d>", lines);}
+[^(\n\t[:space:])]+     {   erros++;   printf("\nError: lexical error");} /* line %d", lines*/
 %%
 
 /*int main(int argc, char **argv)
