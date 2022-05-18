@@ -83,7 +83,7 @@ extern int yydebug;
     PROG = 289,
     FOR = 290,
     READ = 291,
-    WHITE = 292,
+    WRITE = 292,
     DO = 293,
     VAR = 294,
     id = 295

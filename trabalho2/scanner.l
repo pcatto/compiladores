@@ -65,18 +65,18 @@ e               {   return AND              ; }
 "<>"            {   return DIFFERENT        ; }     
 [(]             {   return OPEN             ; }    
 [)]             {   return CLOSE            ; }    
-Se              {   return IF               ; }    
+se              {   return IF               ; }    
 inteiro         {   return INT              ; }    
 real            {   return FLOAT            ; }    
 boleano         {   return BOOL             ; }    
 inicio          {   return INIT             ; }    
 fim             {   return END              ; }    
-Senao           {   return ELSE             ; }    
-Entao           {   return THEN             ; }    
+senao           {   return ELSE             ; }    
+entao           {   return THEN             ; }    
 programa        {   return PROG             ; }    
 enquanto        {   return FOR              ; }    
 leia            {   return READ             ; }    
-escreva         {   return WHITE            ; }    
+escreva         {   return WRITE            ; }    
 faca            {   return DO               ; }    
 var             {   return VAR              ; }    
 

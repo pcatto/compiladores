@@ -45,7 +45,7 @@ extern int yylex(void);
         PROG      
         FOR       
         READ      
-        WHITE     
+        WRITE     
         DO        
         VAR           
         id
@@ -70,8 +70,8 @@ extern int yylex(void);
 
 %%
 
-programa :      PROG identificador PVIRG bloco
-bloco :         VAR declaracao INIT comandos END
+programa :      PROG identificador PVIRG bloco {printf("Sintaticamente Correto");}
+bloco :         VAR declaracao INIT comandos END 
 declaracao :    nome_var DOISP tipo PVIRG | 
                 nome_var  DOISP tipo PVIRG declaracao
 nome_var :      identificador | 
@@ -79,19 +79,19 @@ nome_var :      identificador |
 tipo :          INT | 
                 FLOAT | 
                 BOOL
-comandos :      comando PVIRG | 
+comandos :      comando | 
                 comando PVIRG comandos
 comando :       atribuicao | 
                 condicional | 
                 enquanto | 
                 leitura | 
                 escrita
-atribuicao :    identificador ATRIB expressao
+atribuicao :    identificador ATRIB expressao 
 condicional :   IF expressao THEN comandos |
                 IF expressao THEN comandos ELSE comandos
 enquanto :      FOR expressao DO comandos
 leitura :       READ OPEN  identificador CLOSE
-escrita :       WHITE OPEN  identificador CLOSE
+escrita :       WRITE OPEN  identificador CLOSE 
 expressao :     simples | 
                 simples op_relacional simples
 op_relacional : DIFFERENT | 
@@ -116,7 +116,7 @@ fator :         identificador |
                 True | 
                 False | 
                 NAO fator
-identificador : id
+identificador : id 
 numero :        Num
 
 %%

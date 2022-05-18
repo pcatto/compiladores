@@ -156,7 +156,7 @@ extern int yydebug;
     PROG = 289,
     FOR = 290,
     READ = 291,
-    WHITE = 292,
+    WRITE = 292,
     DO = 293,
     VAR = 294,
     id = 295
@@ -558,7 +558,7 @@ static const char *const yytname[] =
   "DOISP", "PVIRG", "VIRG", "PONTO", "MORE", "MINUS", "OR", "AND", "TIMES",
   "DIV", "EQUAL", "SMALL", "LARGE", "SMALLEQUAL", "LARGEEQUAL",
   "DIFFERENT", "OPEN", "CLOSE", "IF", "INT", "FLOAT", "BOOL", "INIT",
-  "END", "ELSE", "THEN", "PROG", "FOR", "READ", "WHITE", "DO", "VAR", "id",
+  "END", "ELSE", "THEN", "PROG", "FOR", "READ", "WRITE", "DO", "VAR", "id",
   "$accept", "programa", "bloco", "declaracao", "nome_var", "tipo",
   "comandos", "comando", "atribuicao", "condicional", "enquanto",
   "leitura", "escrita", "expressao", "op_relacional", "simples",
@@ -611,9 +611,9 @@ static const yytype_int8 yydefact[] =
 {
        0,     0,     0,    48,     0,     1,     0,     0,     2,     0,
        0,     6,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,    13,    14,    15,    16,    17,     0,     8,     9,    10,
+      11,    13,    14,    15,    16,    17,     0,     8,     9,    10,
        0,     7,    49,    45,    46,     0,     0,     0,    24,    33,
-      37,    42,    43,     0,     0,     0,     3,    11,     0,     4,
+      37,    42,    43,     0,     0,     0,     3,     0,     0,     4,
       47,     0,     0,    27,    28,    29,    30,    31,    26,     0,
       34,    35,    36,     0,    41,    39,    40,     0,     0,     0,
        0,    12,    18,     5,    44,    19,    25,    32,    38,    21,
@@ -694,7 +694,7 @@ static const yytype_int8 yyr1[] =
 static const yytype_int8 yyr2[] =
 {
        0,     2,     4,     5,     4,     5,     1,     3,     1,     1,
-       1,     2,     3,     1,     1,     1,     1,     1,     3,     4,
+       1,     1,     3,     1,     1,     1,     1,     1,     3,     4,
        6,     4,     4,     4,     1,     3,     1,     1,     1,     1,
        1,     1,     3,     1,     1,     1,     1,     1,     3,     1,
        1,     1,     1,     1,     3,     1,     1,     2,     1,     1
@@ -1392,8 +1392,14 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
+  case 2:
+#line 73 "parser.y"
+                                               {printf("Sintaticamente Correto");}
+#line 1399 "parser.tab.c"
+    break;
 
-#line 1397 "parser.tab.c"
+
+#line 1403 "parser.tab.c"
 
       default: break;
     }
