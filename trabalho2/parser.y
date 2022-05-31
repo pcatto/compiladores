@@ -70,54 +70,77 @@ extern int yylex(void);
 
 %%
 
-programa :      PROG identificador PVIRG bloco {printf("Sintaticamente Correto");}
-bloco :         VAR declaracao INIT comandos END 
-declaracao :    nome_var DOISP tipo PVIRG | 
-                nome_var  DOISP tipo PVIRG declaracao
-nome_var :      identificador | 
-                identificador VIRG nome_var
-tipo :          INT | 
-                FLOAT | 
-                BOOL
-comandos :      comando | 
-                comando PVIRG comandos
-comando :       atribuicao | 
-                condicional | 
-                enquanto | 
-                leitura | 
-                escrita
-atribuicao :    identificador ATRIB expressao 
-condicional :   IF expressao THEN comandos |
-                IF expressao THEN comandos ELSE comandos
-enquanto :      FOR expressao DO comandos
-leitura :       READ OPEN  identificador CLOSE
-escrita :       WRITE OPEN  identificador CLOSE 
-expressao :     simples | 
-                simples op_relacional simples
-op_relacional : DIFFERENT | 
-                EQUAL | 
-                SMALL | 
-                LARGE | 
-                SMALLEQUAL | 
-                LARGEEQUAL
-simples :       termo operador termo | 
-                termo
-operador :      MORE | 
-                MINUS | 
-                OR
-termo :         fator | 
-                fator op fator
-op :            TIMES | 
-                DIV | 
-                AND
-fator :         identificador | 
-                numero | 
-                OPEN expressao CLOSE | 
-                True | 
-                False | 
-                NAO fator
-identificador : id 
-numero :        Num
+programa :              PROG identificador PVIRG bloco {printf("Sintaticamente Correto");}
+
+bloco :                 VAR declaracao INIT comandos END 
+
+declaracao :            nome_var DOISP tipo PVIRG | 
+                        nome_var  DOISP tipo PVIRG declaracao
+
+nome_var :              identificador | 
+                        identificador VIRG nome_var
+
+tipo :                  INT | 
+                        FLOAT | 
+                        BOOL
+
+comandos :              comando | 
+                        comando PVIRG comandos
+
+comando :               comando_comb |
+                        comando_aberto
+
+comando_comb :          IF expressao THEN comando_comb ELSE comando_comb |
+                        atribuicao |  
+                        enquanto | 
+                        leitura | 
+                        escrita 
+
+comando_aberto :        IF expressao THEN comando |
+                        IF expressao THEN comando_comb ELSE comando_aberto
+
+atribuicao :            identificador ATRIB expressao 
+
+enquanto :              FOR expressao DO comando_comb
+
+leitura :               READ OPEN  identificador CLOSE
+
+escrita :               WRITE OPEN  identificador CLOSE 
+
+expressao :             simples | 
+                        simples op_relacional simples
+
+op_relacional :         DIFFERENT | 
+                        EQUAL | 
+                        SMALL | 
+                        LARGE | 
+                        SMALLEQUAL | 
+                        LARGEEQUAL
+
+simples :               termo operador termo | 
+                        termo
+
+operador :              MORE | 
+                        MINUS | 
+                        OR
+
+termo :                 fator | 
+                        fator op fator
+
+op :                    TIMES | 
+                        DIV | 
+                        AND
+
+fator :                 identificador | 
+                        numero | 
+                        OPEN expressao CLOSE | 
+                        True | 
+                        False | 
+                        NAO fator
+
+identificador :         id 
+
+numero :                Num
 
 %%
 
